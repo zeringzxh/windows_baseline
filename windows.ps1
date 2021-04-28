@@ -53,13 +53,13 @@ $config = Get-Content -path config.cfg
         if($config_line[1] -eq "Guest")
         {
             $data.code = "1"
-            $projectdata = @{"msg"="guest账户重命名策略符合标准";}
+            $projectdata = @{"msg"="guest账户重命名策略不符合标准";}
             $data['project']+=$projectdata
         }
         else
         {
             $data.code = "0"
-            $projectdata = @{"msg"="guest账户重命名策略不符合标准";}
+            $projectdata = @{"msg"="guest账户重命名策略符合标准";}
             $data['project']+=$projectdata
         }
     }
@@ -78,13 +78,13 @@ $config = Get-Content -path config.cfg
         if($config_line[1] -eq "Administrator")
         {
             $data.code = "1"
-            $projectdata = @{"msg"="Administrator账户重命名策略符合标准";}
+            $projectdata = @{"msg"="Administrator账户重命名策略不符合标准";}
             $data['project']+=$projectdata
         }
         else
         {
             $data.code = "0"
-            $projectdata = @{"msg"="Administrator账户重命名策略不符合标准";}
+            $projectdata = @{"msg"="Administrator账户重命名策略符合标准";}
             $data['project']+=$projectdata
         }
     }
