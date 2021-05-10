@@ -24,17 +24,17 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "EnableGuestAccount "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "1")
         {
             $data.code = "1"
-            $projectdata = @{"msg"="guest账户停用策略符合标准";}
+            $projectdata = @{"msg"="guest账户停用策略不符合标准";}
             $data['project']+=$projectdata
         }
         else
         {
             $data.code = "0"
-            $projectdata = @{"msg"="guest账户停用策略不符合标准";}
+            $projectdata = @{"msg"="guest账户停用策略符合标准";}
             $data['project']+=$projectdata
         }
     }
@@ -49,8 +49,8 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "NewGuestName "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
-        if($config_line[1] -eq "Guest")
+        $config_line[1] = $config_line[1].Trim(' `"')
+        if(($config_line[1] -eq "Guest"))
         {
             $data.code = "1"
             $projectdata = @{"msg"="guest账户重命名策略不符合标准";}
@@ -74,8 +74,8 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "NewAdministratorName "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
-        if($config_line[1] -eq "Administrator")
+        $config_line[1] = $config_line[1].Trim(' `"')
+        if(($config_line[1] -eq "Administrator"))
         {
             $data.code = "1"
             $projectdata = @{"msg"="Administrator账户重命名策略不符合标准";}
@@ -98,7 +98,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "PasswordComplexity "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "1")
         {
             $data.code = "1"
@@ -122,7 +122,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "MinimumPasswordLength "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -ge "8")
         {
             $data.code = "1"
@@ -146,7 +146,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "MaximumPasswordAge "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -le "90")
         {
             $data.code = "1"
@@ -170,7 +170,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "LockoutBadCount "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -le "5")
         {
             $data.code = "1"
@@ -195,7 +195,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "ResetLockoutCount "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -ge "10")
         {
             $data.code = "1"
@@ -219,7 +219,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "SeShutdownPrivilege "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "*S-1-5-32-544")
         {
             $data.code = "1"
@@ -245,7 +245,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "SeRemoteShutdownPrivilege "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "*S-1-5-32-544")
         {
             $data.code = "1"
@@ -270,7 +270,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "SeProfileSingleProcessPrivilege "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "*S-1-5-32-544")
         {
             $data.code = "1"
@@ -293,7 +293,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "SeInteractiveLogonRight "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "*S-1-5-32-544,*S-1-5-32-545,*S-1-5-32-551")
         {
             $data.code = "1"
@@ -316,7 +316,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "SeNetworkLogonRight "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "*S-1-5-32-544,*S-1-5-32-545,*S-1-5-32-551")
         {
             $data.code = "1"
@@ -339,7 +339,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditSystemEvents "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -363,7 +363,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditLogonEvents "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -386,7 +386,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditObjectAccess "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -410,7 +410,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditProcessTracking "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "2")
         {
             $data.code = "1"
@@ -433,7 +433,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditDSAccess "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -456,7 +456,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditPrivilegeUse "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -479,7 +479,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditSystemEvents "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -502,7 +502,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditAccountLogon "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -526,7 +526,7 @@ $config = Get-Content -path config.cfg
     $config_line = $config[$i] -split "="
     if(($config_line[0] -eq "AuditAccountManage "))
     {
-        $config_line[1] = $config_line[1].Trim(' ')
+        $config_line[1] = $config_line[1].Trim(" `"")
         if($config_line[1] -eq "3")
         {
             $data.code = "1"
@@ -739,7 +739,7 @@ if($config -le "600")
 $Key = 'HKEY_CURRENT_USER\Control Panel\Desktop'
 $name = "ScreenSaverIsSecure"
 $config = (Get-ItemProperty -Path "Registry::$Key" -ErrorAction Stop).$name
-if($config -ge "1")
+if($config -eq "1")
         {
             $data.code = "1"
             $projectdata = @{"msg"="屏幕恢复时使用密码保护策略符合标准";}
@@ -752,13 +752,14 @@ if($config -ge "1")
             $data['project']+=$projectdata
         }
 #结果处理
+$windowsip = (ipconfig|select-string "IPv4"|out-string).Split(":")[-1].Trim() -replace "\." ,"-"
 $date = Get-Date
-$date >>windowsResult.txt
+$date >>${windowsip}_result.txt
 
 #$result = ""
 foreach ($i in $data.project){
     #$result += "{'msg':$($i.msg)},"
 	echo "{'msg':[$($i.msg)]}"
-	$i.msg >>windowsResult.txt
+	$i.msg >>${windowsip}_result.txt
 	
 }
